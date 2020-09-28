@@ -1,25 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/shared/Header';
+import Routes from './Routes';
+import Provider from './store/Provider';
+import {initStore} from './store';
+import{
+  BrowserRouter as Router
+} from 'react-router-dom';
 
-function App() {
+const store=initStore();
+const App=()=>{
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Router>
+        <Header/>
+        <Routes/>
+      </Router>
+    </Provider>
   );
 }
 
