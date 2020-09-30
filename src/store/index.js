@@ -1,9 +1,14 @@
-import {rentalData} from './data';
 import {createStore,combineReducers} from 'redux';
+import rentals from './reducers/rentals';
 export function initStore(){
   const reducers=combineReducers({
-    rentals:()=>{
-      return rentalData;
+    rentals,
+    data1:(state=[],action)=>{
+      if(action.type==='FETCH_DATA'){
+        return ['1','2','3'];
+      }else{
+        return state;
+      }     
     }
   });
   const store=createStore(reducers);
