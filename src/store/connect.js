@@ -11,6 +11,7 @@ const connect=(selectState)=> Component =>{
         this.unsubscribe=context.subscribe(()=> this.handleStateChange(context));
       }
       handleStateChange=(context)=>{
+        debugger;
         const rootState=context.getState();
         this.setState({slice:selectState(rootState)});
       }
@@ -18,14 +19,14 @@ const connect=(selectState)=> Component =>{
         this.unsubscribe();
       }
       render(){
-        debugger
+        debugger;
         const {dispatch}=this.context;
         const {slice}=this.state;
         return <Component {...slice} dispatch={dispatch}></Component>;
       }
     }
     Connect.contextType=StateContext;
-
+    debugger;
     return Connect;
 }
 

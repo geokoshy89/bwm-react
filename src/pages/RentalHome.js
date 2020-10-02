@@ -1,10 +1,11 @@
 import React from 'react';
 import RentalCard from '../components/rental/RentalCard';
 import connect from '../store/connect';
-import {fetchRentals} from '../actions';
+import {fetchRentals,createRental} from '../actions';
 class RentalHome extends React.Component{
 
   componentDidMount(){
+    debugger
     this.props.dispatch(fetchRentals());
   }
   renderRentals=(rentals)=>
@@ -14,6 +15,22 @@ class RentalHome extends React.Component{
       </div>      
     );
  
+  createRental=()=>{
+    debugger
+    const uid=Math.random().toString(32).slice(2);
+    const newRental={
+      _id:uid,
+      title: "Nice view on ocean",
+      city: "San Francisco",
+      category: "condo",
+      image: "http://via.placeholder.com/350x250",
+      numOfRooms: 4,
+      shared: true,
+      description: "Very nice apartment in center of the city.",
+      dailyPrice: 43
+    };
+    this.props.dispatch(createRental(newRental));
+  }
   render(){
     debugger
     const {rentals}=this.props;
@@ -23,6 +40,10 @@ class RentalHome extends React.Component{
         <div className="row">
           {this.renderRentals(rentals)}
         </div>
+        <button 
+        className="btn btn-success"
+        onClick={this.createRental}
+        >Create Rental</button>
       </div>
     )
   }
