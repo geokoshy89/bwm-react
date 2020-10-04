@@ -1,9 +1,17 @@
 @import './colors.scss';
 @import './header.scss';
 @import './rental-home.scss';
+@import './rental-details.scss';
 
 html,body{
   height:100%;
+}
+.rental-link{
+  color: inherit;
+  &:hover{
+    text-decoration: none;
+    color:inherit;
+  }
 }
 .bwm-container{
   padding-top: 70px;
