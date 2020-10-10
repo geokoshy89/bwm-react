@@ -15,4 +15,10 @@ const rentalSchema=new Schema({
   CreatedAt:{type:Date,default:Date.now},
 });
 
+rentalSchema.statics.sendError=function (res,config){
+  const{status,detail}=config;
+  return res
+  .status(status)
+  .send({errors:[{title:'Rental Error!',detail}]});
+}
 module.exports=mongoose.model('Rental',rentalSchema);
