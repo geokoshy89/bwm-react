@@ -3,7 +3,8 @@ const Rental=require('../models/rental');
 exports.getRentals=(req,res)=>{
   Rental.find({},(error,foundRentals)=>{
     if(error){
-      return res.status(422).send({errors:[{title:'Rental Error!',message:'Can not retrieve  rental data'}]});
+      return Rental
+                .sendError(res,{status:422,detail:'Can not retrieve  rental data'})
     }
     return res.json(foundRentals);
   });
@@ -14,7 +15,8 @@ exports.getRentalById=(req,res)=>{
   const {rentalId}=req.params;
   Rental.findById(rentalId,(error,foundRental)=>{
     if(error){
-      return res.status(422).send({errors:[{title:'Rental Error!',message:'Can not retrieve  rental data'}]});
+      return Rental
+                .sendError(res,{status:422,detail:'Can not retrieve  rental data'})
     }
     return res.json(foundRental);
   });
@@ -25,8 +27,8 @@ exports.createRental=(req,res)=>{
 
   Rental.create(rentalData,(error,createdRental)=>{
     if(error){
-      console.log(error);
-      return res.status(422).send({errors:[{title:'Rental Error!',message:'Can not post rental data'}]});
+      return Rental
+                .sendError(res,{status:422,detail:'Can not post  rental data'})
     }
     return res.json({message:`Rental with id ${createdRental._id} was added!`});
   });
