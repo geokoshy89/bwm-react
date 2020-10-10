@@ -2,10 +2,17 @@ import React from 'react';
 import RentalCard from 'components/rental/RentalCard';
 import { connect } from 'react-redux';
 import {fetchRentals} from 'actions';
+import axios from 'axios';
+
 class RentalHome extends React.Component{
 
   componentDidMount(){
-    this.props.dispatch(fetchRentals());
+    axios.get('http://localhost:3000/api/v1/rentals')
+    .then(res=>{
+      debugger
+      const rentals=res.data;
+      this.props.dispatch(fetchRentals(rentals));
+    });
   }
   renderRentals=(rentals)=>
      rentals.map(rental=>       
