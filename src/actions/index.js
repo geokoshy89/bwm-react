@@ -3,7 +3,7 @@ import axios from 'axios';
 export const fetchRentals=()=>{
   
   return (dispatch)=>{
-    axios.get('http://localhost:3000/api/v1/rentals')
+    axios.get('/api/v1/rentals')
     .then(res=>{
       const rentals=res.data;
       dispatch({
@@ -17,11 +17,18 @@ export const fetchRentals=()=>{
 
 
 export const fetchRentalById=(rentalId)=>{
-  // const rental=rentalData.find(rental=>rental._id===rentalId);
-  return {
-    type:"FETCH_RENTAL_BY_ID",
-    rental:{}
-  }
+  return (dispatch)=>{
+    dispatch({type:'IS_FETCHING_RENTAL'});
+  axios.get(`/api/v1/rentals/${rentalId}`)
+  .then(res=>{
+    const rental=res.data;
+    dispatch({
+      type:"FETCH_RENTAL_BY_ID",
+      rental
+    });
+  })
+ }
+
 }
 
 export const createRental=rental=>{
