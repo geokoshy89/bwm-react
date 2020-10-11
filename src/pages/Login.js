@@ -1,23 +1,9 @@
 import React from 'react';
+import LoginForm from 'components/forms/LoginForm';
 class Login extends React.Component{
-
-  state={
-    email:'',
-    password:''
+  loginUser=(loginData)=>{
+    alert(JSON.stringify(loginData));
   }
-
-handleInputChange=(event)=>{
-  const {name,value}=event.target;
-  const a={name:value};
-  const b={[name]:value};
-  debugger
-  this.setState({[name]:value});
-}
-
-handleSubmit=(event)=>{
-  alert(JSON.stringify(this.state));
-  // event.preventDefault();
-}
   render(){
     return(
        <div className="bwm-form">
@@ -27,40 +13,7 @@ handleSubmit=(event)=>{
             {/* <!-- <div className="alert alert-success">
               Some message
             </div> --> */}
-            <form>
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input 
-                  name="email"
-                  onChange={this.handleInputChange}
-                  value={this.email}
-                  type="email"
-                  className="form-control"
-                  id="email" />
-                {/* <div className="alert alert-danger">
-                  <div>
-                    Email is required.
-                  </div>
-                  <div>
-                    Must be valid email format!
-                  </div>
-                </div> */}
-              </div>
-              <div className="form-group">
-                <label htmlFor="password">Password</label>
-                <input 
-                  name="epasswordmail"
-                  onChange={this.handleInputChange}
-                  value={this.password}
-                  type="password"
-                  className="form-control"
-                  id="password" />
-              </div>
-              <button 
-                onClick={this.handleSubmit}
-                type="button" 
-                className="btn btn-bwm-main">Submit</button>
-            </form>
+            <LoginForm onSubmit={this.loginUser}/>
             {/* <div className="alert alert-danger">
               <p>
                 Some Error
