@@ -20,7 +20,7 @@ class Register extends React.Component{
     const {shoudlRedirect,errors}=this.state;
     debugger
     if(shoudlRedirect){
-      return <Redirect to={{pathname: '/login'}}/>
+      return <Redirect to={{pathname: '/login' , state:{message:'You have been successfully registered.'}}}/>
     }
 
     return(

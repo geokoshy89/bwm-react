@@ -15,7 +15,6 @@ export const AuthBaseProvider=({children,dispatch})=>{
     }
     const isAuthenticated=()=>{
         const decodedToken=decodeToken(getToken());
-
         return isTokenValid(decodedToken);
     }    
 

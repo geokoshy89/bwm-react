@@ -4,6 +4,7 @@ import {
   Route
 } from 'react-router-dom';
 import AuhtRoute from 'components/auth/AuthRoute';
+import GuestRoute from 'components/auth/GuestRoute';
 import RentalHome from './pages/RentalHome';
 import RentalDetail from './pages/RentalDetail';
 import Login from './pages/Login';
@@ -21,13 +22,14 @@ const Routes=()=>{
     <Route exact path="/rentals/:id">
       <RentalDetail/>
     </Route>
-    <Route path="/login">
+    <GuestRoute path="/login">
       <Login/>
-    </Route>
-    <Route path="/register">
+    </GuestRoute>
+    <GuestRoute path="/register">
       <Register/>
-    </Route>
-    <AuhtRoute path="/secret" component={SecretPage}>
+    </GuestRoute>
+    <AuhtRoute path="/secret">
+      <SecretPage/>
     </AuhtRoute>
   </Switch>
   </div>
