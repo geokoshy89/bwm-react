@@ -1,7 +1,8 @@
-function render(){
-  const root=document.getElementById('root');
-  var node=document.createElement('div');
-  var textNode=document.createTextNode('What a nice day');
-  node.appendChild(textNode);
-  root.appendChild(node);
-}
+function render() {
+    const root = document.getElementById('root');
+    var node = document.createElement("DIV");
+    var textnode = document.createTextNode("What a nice day!");
+  
+    node.appendChild(textnode);
+    root.appendChild(node);
+  }

@@ -6,9 +6,7 @@ import {fetchRentals} from 'actions';
 class RentalHome extends React.Component{
 
   componentDidMount(){
-
     this.props.dispatch(fetchRentals());
-
   }
   renderRentals=(rentals)=>
      rentals.map(rental=>       

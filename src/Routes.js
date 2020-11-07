@@ -3,11 +3,13 @@ import {
   Switch,
   Route
 } from 'react-router-dom';
-
+import AuhtRoute from 'components/auth/AuthRoute';
 import RentalHome from './pages/RentalHome';
 import RentalDetail from './pages/RentalDetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import SecretPage from './pages/SecretePage';
+import { Router } from 'components/Bwm-Router';
 const Routes=()=>{
   
   return (
@@ -25,6 +27,8 @@ const Routes=()=>{
     <Route path="/register">
       <Register/>
     </Route>
+    <AuhtRoute path="/secret" component={SecretPage}>
+    </AuhtRoute>
   </Switch>
   </div>
   );
