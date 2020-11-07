@@ -1,5 +1,4 @@
 export const capitalize=(value)=>{
-  debugger;
   if(!value||typeof(value)!='string'){return '';}
   
   return value

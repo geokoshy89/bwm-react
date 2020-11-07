@@ -1,21 +1,39 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import Header from 'components/shared/Header';
 import Routes from 'Routes';
 import { Provider } from 'react-redux';
 import {initStore} from 'store';
+import {AuthProvider,UseAuth} from 'providers/AuthProvider';
 import{
   BrowserRouter as Router
 } from 'react-router-dom';
 
 const store=initStore();
+
+const Providers=({children})=>
+  <Provider store={store}>
+  <AuthProvider>
+    {children}
+    </AuthProvider>
+  </Provider>
+
+const BwmApp=()=>{
+  const authService=UseAuth();
+  useEffect(()=>{
+    authService.checkAuthState();
+  },[authService]);
+  return (
+    <Router>
+            <Header logout={authService.signOut}/>
+            <Routes/>
+          </Router>
+  )
+}
 const App=()=>{
   return (
-    <Provider store={store}>
-      <Router>
-        <Header/>
-        <Routes/>
-      </Router>
-    </Provider>
+    <Providers>
+          <BwmApp/>
+      </Providers>
   );
 }
 
