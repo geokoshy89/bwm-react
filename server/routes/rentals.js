@@ -6,10 +6,10 @@ const {
   createRental,
   updateRental,
   deleteRental}=require('../controllers/rentals');
-
+const {onlyAuthUser}=require('../controllers/users');
 router.get('/',getRentals);
 router.get('/:rentalId',getRentalById);
-router.post('/',createRental);
+router.post('/',onlyAuthUser,createRental);
 // router.delete("/:rentalId",deleteRental);
 // router.patch("/:rentalId",updateRental);
 
