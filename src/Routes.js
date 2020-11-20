@@ -10,7 +10,6 @@ import RentalDetail from './pages/RentalDetail';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import SecretPage from './pages/SecretePage';
-import { Router } from 'components/Bwm-Router';
 const Routes=()=>{
   
   return (
